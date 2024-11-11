@@ -1,0 +1,1 @@
+ALTER TABLE payments RENAME COLUMN payment_method TO payment_method_id;
