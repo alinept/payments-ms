@@ -69,4 +69,16 @@ public class PaymentService {
         repository.save(payment.get());
         order.updatePayment(payment.get().getOrderId());
     }
+
+    public void updateStatus(Long id) {
+        Optional<Payment> payment = repository.findById(id);
+
+        if (!payment.isPresent()) {
+            throw new EntityNotFoundException();
+        }
+
+        payment.get().setStatus(Status.CONFIRMED_NOT_INTEGRATED);
+        repository.save(payment.get());
+
+    }
 }
